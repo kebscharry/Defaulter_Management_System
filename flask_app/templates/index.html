@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Defaulter Prediction System</title>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <h1>Defaulter Prediction System</h1>
+        <form action="/predict" method="POST" class="form">
+            <div class="form-row">
+                <label for="days_between_next_last">Days Between Last and Next Visit:</label>
+                <input type="number" name="days_between_next_last" required>
+            </div>
+            <div class="form-row">
+                <label for="days_between_last_self">Days Between Last and Self Visit:</label>
+                <input type="number" name="days_between_last_self" required>
+            </div>
+            <div class="form-row">
+                <label for="months_of_prescription">Months of Prescription:</label>
+                <input type="number" name="months_of_prescription" required>
+            </div>
+            <div class="form-row">
+                <label for="ahd_client">AHD Client:</label>
+                <select name="ahd_client">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="age">Age:</label>
+                <input type="number" name="age" required>
+            </div>
+            <div class="form-row">
+                <label for="bmi">BMI:</label>
+                <input type="number" name="bmi" required>
+            </div>
+            <div class="form-row">
+                <label for="systolic_bp">Systolic Blood Pressure:</label>
+                <input type="number" name="systolic_bp" required>
+            </div>
+            <div class="form-row">
+                <label for="diastolic_bp">Diastolic Blood Pressure:</label>
+                <input type="number" name="diastolic_bp" required>
+            </div>
+            <div class="form-row">
+                <label for="medical_cover">Medical Cover:</label>
+                <select name="medical_cover">
+                    <option value="0">None</option>
+                    <option value="1">NHIF</option>
+                    <option value="2">Other</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="sex">Sex:</label>
+                <select name="sex">
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    <div class="result-container">
+        {% if prediction is not none %}
+        <h2>Prediction: {{ prediction }}</h2>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
