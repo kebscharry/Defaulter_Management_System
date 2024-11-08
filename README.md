@@ -1,1 +1,1 @@
-![Image Alt Text](defaulter.png)
+![Image Alt Text](defaulter.jpg)
